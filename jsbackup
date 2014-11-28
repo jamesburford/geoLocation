@@ -69,13 +69,7 @@ function turnOnWatch() {
     var options = {
       frequency: 3000
     };
-    positionTimer = navigator.geolocation.watchPosition(
-                    function (position) {
-                        setMarkerPosition(
-                            currentPositionMarker,
-                            position
-                        );
-                    });
+    //watchID = navigator.geolocation.watchPosition(success, error, options);
 }
 
 function success(Position) {
@@ -102,10 +96,52 @@ function error(error) {
 }
 
 function turnOffWatch() {
-    
+    navigator.geolocation.clearWatch(watchID);
 }
 
 // Google Maps Initialization
+
+
+
+            /*function initializeMap()
+            {
+                map = new google.maps.Map(document.getElementById('map_canvas'), {
+                   zoom: 13,
+                   center: mapCenter,
+                   mapTypeId: google.maps.MapTypeId.ROADMAP
+                 });
+            }
+
+            function locError(error) {
+                // the current position could not be located
+                alert("The current position could not be found!");
+            }
+
+            function setCurrentPosition(Position) {
+                console.log("current position: " + Position);
+                currentPositionMarker = new google.maps.Marker({
+                    map: map,
+                    position: new google.maps.LatLng(
+                        Position.coords.latitude,
+                        Position.coords.longitude
+                    ),
+                    title: "Current Position"
+                });
+                
+                map.panTo(new google.maps.LatLng(
+                        Position.coords.latitude,
+                        Position.coords.longitude
+                    ));
+            }
+
+            function setMarkerPosition(currentPositionMarker, Position) {
+                console.log("marker" + currentPositionMarker + "Position latitude" + Position.coords.latitude + "Position longitude" + Position.coords.longitude);
+                currentPositionMarker.setPosition(
+                    new google.maps.LatLng(
+                        Position.coords.latitude,
+                        Position.coords.longitude)
+                );
+            }*/
 
             var map,
                 currentPositionMarker,
